@@ -1,8 +1,5 @@
 #ifndef UTILITY_H
 #define UTILITY_H
-#endif // UTILITY_H
-#ifndef UTILITY_H
-#define UTILITY_H
 
 #endif // UTILITY_H
 #include <QPoint>
@@ -19,17 +16,3 @@ inline bool collisionWithCircle(QPoint p1,int r1,QPoint p2,int r2)
     }
     return false;
 }
-#include <QWidget>
-
-class utility : public QWidget
-{
-    Q_OBJECT
-public:
-    explicit utility(QWidget *parent = nullptr);
-
-signals:
-
-public slots:
-};
-
-

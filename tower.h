@@ -1,26 +1,64 @@
-//类外
-#include <QTimer>
+#ifndef TOWER_H
+#define TOWER_H
+
+#include <QObject>
+#include <QPoint>
+#include <QSize>
+#include <QPixmap>
+
 #include "enemy.h"
+#include "mainwindow.h"
+
+class QPainter;
 class Enemy;
+class MainWindow;
 class QTimer;
 
-//类内
+
+class Tower :QObject
+{
+    Q_OBJECT
 public:
-    void attackEnemy();//攻击敌人
-    void targetKilled();//当目标被击杀后
-    void chooseEnemyFromAttack(Enemy * enemy);//从可以攻击的敌人中，选出攻击的敌人
+    Tower(QPoint pos,MainWindow * game,const QPixmap & sprite,int damage);
+    ~Tower();
+    Tower();
 
-    void removeBullet();//移除防御塔产生的子弹
-    void lostSightOfEnemy();//丢失攻击目标的视野
-    void checkEnemyInRange();//检查敌人是否在攻击范围内
-    Enemy * getAttackedEnemy();//得到正在攻击的敌人
+    void draw(QPainter * painter)const;
 
-private slots:
-    void shootWeapon();//私有信号槽，实现和子弹类的连接
+    void attackEnemy();
+    void targetKilled();
+    void chooseEnemyFromAttack(Enemy * enemy);
+    void removeBullet();
+    void lostSightOfEnemy();
+    void checkEnemyInRange();
+    void reSetDamage(int damage);
+    int getDamgae();
+    void levelChange();
+    int getLevel();
 
-private:
-    bool m_attacking;//是否在攻击
-    int m_damage;//防御塔的攻击力
-    int m_fireRate;//射速
-    Enemy * m_chooseEnemy;//正在攻击的敌人
+    void getRemoved();
+
+    Enemy * getAttackEnemy();
+
+protected slots:
+    void shootWeapon();
+
+protected:
+    bool m_attacking;
+    int m_attackRange;
+    int m_damage;
+    int m_fireRate;
+    int m_level;
+
+    Enemy * m_chooseEnemy;
+    MainWindow * m_game;
     QTimer * m_fireRateTime;
+
+    const QPoint m_pos;//这个pos是中心点
+    const QPixmap m_sprite;
+
+    static const QSize m_fixedSize;
+
+};
+
+#endif // TOWER_H

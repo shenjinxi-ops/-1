@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QPoint>
 #include <QPainter>
-#include <QString>
+#include <QPixmap>
 #include <QSize>
 
 #include "enemy.h"
@@ -15,33 +15,34 @@ class Enemy;
 class MainWindow;
 class Tower;
 
-class Bullet :public QObject
+
+class Bullet:public QObject
 {
     Q_OBJECT
-    Q_PROPERTY(QPoint m_currentPos READ getCurrentPos WRITE setCurrentPos)//子弹动态移动
+    Q_PROPERTY(QPoint m_currentPos READ getCurrentPos WRITE setCurrentPos)
 public:
+    Bullet(QPoint startPos,QPoint targetPos,int damage,Enemy * enemy,MainWindow * game,const QPixmap & sprite=QPixmap(":/images/bullet.png"));
     Bullet();
-    Bullet(QPoint startPos,QPoint targetPos,int damage,Enemy * targetEnemy,MainWindow * game,QString path=":/images/bullet.png");
-    QPoint getCurrentPos();//得到子弹的当前位置
-    void setCurrentPos(QPoint pos);//设置子弹的当前位置
+    QPoint getCurrentPos();
+    void setCurrentPos(QPoint pos);
 
-    void move();//子弹的移动
-    void draw(QPainter * painter)const;//绘画子弹
+    void move();
+    void draw(QPainter * painter) const;
 
 private slots:
-    void hitTarget();//私有信号槽，击中敌人的时候触发
-
+    void hitTarget();
 private:
     QPoint m_startPos;
     QPoint m_targetPos;
     QPoint m_currentPos;
     int m_damage;
-    QString m_path;
+    QPixmap m_sprite;
 
     Enemy * m_targetEnemy;
     MainWindow * m_game;
 
     static const QSize m_fixedSize;
+
 };
 
 #endif // BULLET_H
