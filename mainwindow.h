@@ -45,7 +45,6 @@ public:
     void addWayPoint3();
 
 
-
     bool canBuyTower1();
     bool canBuyTower2();
     bool canBuyTower3();
@@ -104,3 +103,4 @@ private:
 
 };
 #endif // MAINWINDOW_H
+

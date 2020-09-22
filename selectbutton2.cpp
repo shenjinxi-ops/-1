@@ -5,7 +5,7 @@
 #include <QPoint>
 #include <QString>
 
-
+//  升级
 static const int towerupdate1Cost=300;//塔第一次升级的价钱
 static const int towerupdate2Cost=400;//第二次升级
 
@@ -46,13 +46,13 @@ void selectButton2::draw(QPainter *painter) const
     painter->setPen(Qt::red);
     if(level==1)
     {
-        painter->drawText(QRect(m_pos.x(),m_pos.y(),100,25),QString("update: %1").arg(towerupdate1Cost));
+        painter->drawText(QRect(m_pos.x(),m_pos.y(),100,15),QString("update: %1").arg(towerupdate1Cost));
     }
     else
     {
-        painter->drawText(QRect(m_pos.x(),m_pos.y(),100,25),QString("update: %1").arg(towerupdate2Cost));
+        painter->drawText(QRect(m_pos.x(),m_pos.y(),100,15),QString("update: %1").arg(towerupdate2Cost));
     }
-    painter->drawText(QRect(m_pos.x(),m_pos.y()+25,100,25),QString("remove"));
+    painter->drawText(QRect(m_pos.x(),m_pos.y()+50,100,15),QString("remove"));
     painter->restore();
 }
 

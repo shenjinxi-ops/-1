@@ -1,5 +1,7 @@
 #include "selectbutton.h"
 
+
+//  选择塔
 selectButton::selectButton(QPoint pos,MainWindow * game,int width,int height):
     m_game(game),
     m_pos(pos),
@@ -8,7 +10,7 @@ selectButton::selectButton(QPoint pos,MainWindow * game,int width,int height):
 {
     m_selectBoxImagePath[0]=":/images/tower1.jpg";
     m_selectBoxImagePath[1]=":/images/tower2.png";
-    m_selectBoxImagePath[2]=":/images/tower3.png";
+    m_selectBoxImagePath[2]=":/images/tower3.jpg";
 }
 
 selectButton::~selectButton()
@@ -16,12 +18,12 @@ selectButton::~selectButton()
     m_game=NULL;
 }
 
-void selectButton::draw(QPainter *painter) const
+void selectButton::draw(QPainter *painter) const    //选择框位置
 {
         painter->save();
         painter->drawPixmap(m_pos.x(),m_pos.y(),m_selectBoxImagePath[0]);
-        painter->drawPixmap(m_pos.x()+35,m_pos.y(),m_selectBoxImagePath[1]);
-        painter->drawPixmap(m_pos.x()+70,m_pos.y(),m_selectBoxImagePath[2]);
+        painter->drawPixmap(m_pos.x()+70,m_pos.y(),m_selectBoxImagePath[1]);
+        painter->drawPixmap(m_pos.x()+140,m_pos.y(),m_selectBoxImagePath[2]);
         painter->restore();
 }
 
@@ -30,7 +32,7 @@ void selectButton::getRemoved()
     m_game->removeButton(this);
 }
 
-bool selectButton::containPos(QPoint pos)
+bool selectButton::containPos(QPoint pos)   //判断点击是否在选择框内
 {
     bool xInHere=pos.x()>m_pos.x() && pos.x()<m_pos.x()+m_width;
     bool yInHere=pos.y()>m_pos.y() && pos.y()<m_pos.y()+m_height;

@@ -51,5 +51,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 RESOURCES += \
     rec.qrc
 
-DISTFILES += \
-    images/background2.jpg
+DISTFILES +=

@@ -10,7 +10,7 @@
 #include <QPropertyAnimation>
 
 
-const QSize Bullet::m_fixedSize(5,5);
+const QSize Bullet::m_fixedSize(10,10);
 
 Bullet::Bullet()
 {
@@ -39,7 +39,7 @@ void Bullet::setCurrentPos(QPoint pos)
 
 void Bullet::move()
 {
-    static int duration=100;
+    static int duration=100;     //存在时间
     QPropertyAnimation * animation =new QPropertyAnimation(this,"m_currentPos");
     animation->setDuration(duration);
     animation->setStartValue(m_startPos);

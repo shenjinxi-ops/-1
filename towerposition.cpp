@@ -5,7 +5,7 @@
 #include <QPainter>
 #include <QPixmap>
 
- const QSize TowerPosition::m_fixedSize(35,35);
+ const QSize TowerPosition::m_fixedSize(70,70);
 
 TowerPosition::TowerPosition(QPoint pos,const QPixmap & sprite):
     m_hasTower(false),
@@ -139,7 +139,7 @@ void TowerPosition::setButton(selectButton *button)
 
 void TowerPosition::setButton2(selectButton2 *button)
 {
-    m_button2=button;//我这里一开始写成了 m_hasButton2=button,赋值给错了，导致这个防御塔坑的私有成员m_button2==NULL,就进不去那个if结构
+    m_button2=button;
 }
 
 Tower * TowerPosition::get_tower()

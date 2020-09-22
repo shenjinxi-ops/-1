@@ -11,7 +11,7 @@
 #include <QPixmap>
 #include <QVector2D>
 
-const QSize Enemy::m_fixedSize(22,23);
+const QSize Enemy::m_fixedSize(80,80);
 
 Enemy::Enemy(wayPoint * startWayPoint,MainWindow * game,const QPixmap & sprite):
     QObject(0),
@@ -19,9 +19,9 @@ Enemy::Enemy(wayPoint * startWayPoint,MainWindow * game,const QPixmap & sprite):
     m_pos(startWayPoint->getPos()),
     m_sprite(sprite)
 {
-    m_maxHp=40;
+    m_maxHp=40;          //初始血量
     m_currentHp=m_maxHp;
-    m_walkingSpeed=1;
+    m_walkingSpeed=1;    //移速
     m_active=false;
     m_destinationWayPoint=startWayPoint->getNextWayPoint();
 }
@@ -33,7 +33,7 @@ Enemy::~Enemy()
     m_game=NULL;
 }
 
-void Enemy::draw(QPainter *painter) const
+void Enemy::draw(QPainter *painter) const    //画血条
 {
     if(!m_active)
     {

@@ -13,16 +13,16 @@
 #include <QtMath>
 
 
-const QSize Tower::m_fixedSize(35,35);
+const QSize Tower::m_fixedSize(70,70);
 
 Tower::Tower()
 {}
 
 Tower::Tower(QPoint pos,MainWindow * game, const QPixmap & sprite,int damage):
     m_attacking(false),
-    m_attackRange(75),
+    m_attackRange(150),//攻击范围
     m_damage(damage),
-    m_fireRate(1000),
+    m_fireRate(1300),//攻击频率
     m_level(1),
     m_chooseEnemy(NULL),
     m_game(game),
@@ -42,13 +42,13 @@ Tower::~Tower()
     delete m_chooseEnemy;
 }
 
-void Tower::draw(QPainter *painter) const
+void Tower::draw(QPainter *painter) const   //防御塔等级
 {
     painter->save();
     painter->setPen(Qt::green);
     painter->drawEllipse(m_pos,m_attackRange,m_attackRange);
-    painter->drawText(QRect(this->m_pos.x()-30,this->m_pos.y()+15,100,25),QString("level: %1").arg(m_level));//把防御塔的等级画出来
-    painter->drawPixmap(m_pos.x()-m_fixedSize.width()/2,m_pos.y()-m_fixedSize.height()/2-10,m_sprite);
+    painter->drawText(QRect(this->m_pos.x()-60,this->m_pos.y()+30,200,50),QString("level: %1").arg(m_level));//把防御塔的等级画出来
+    painter->drawPixmap(m_pos.x()-m_fixedSize.width()/2,m_pos.y()-m_fixedSize.height()/2-20,m_sprite);
 }
 
 void Tower::chooseEnemyFromAttack(Enemy *enemy)

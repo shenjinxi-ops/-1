@@ -21,11 +21,11 @@ private:
     int m_height;
     QString m_selectBoxImagePath[3];
 public:
-    selectButton(QPoint pos,MainWindow * game,int width=105,int height=35);//我的三张图片都是35*35的，所以就直接设置了105*35了
+    selectButton(QPoint pos,MainWindow * game,int width=210,int height=70);
     ~selectButton();
     void draw(QPainter * painter)const;
     void getRemoved();//选择框被点了一次，就要移除
-    bool containPos(QPoint pos);//判断这次的点击是否在我的选择框内
+    bool containPos(QPoint pos);//判断这次的点击是否在选择框内
     QPoint getPos();
 };
 

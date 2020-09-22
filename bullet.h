@@ -21,7 +21,7 @@ class Bullet:public QObject
     Q_OBJECT
     Q_PROPERTY(QPoint m_currentPos READ getCurrentPos WRITE setCurrentPos)
 public:
-    Bullet(QPoint startPos,QPoint targetPos,int damage,Enemy * enemy,MainWindow * game,const QPixmap & sprite=QPixmap(":/images/bullet.png"));
+    Bullet(QPoint startPos,QPoint targetPos,int damage,Enemy * enemy,MainWindow * game,const QPixmap & sprite=QPixmap(":/images/bullet.jpg"));
     Bullet();
     QPoint getCurrentPos();
     void setCurrentPos(QPoint pos);
